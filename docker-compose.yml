@@ -5,7 +5,7 @@ services:
     image: seccams:0.0.1
     build: ./seccams
     environment: 
-      - HOST=192.168.0.34
+      - HOST=192.168.0.90
       - PORT=4590
     networks:
       - seccams
