@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  seccams:
+    image: seccams:0.0.1
+    build: ./seccams
+    environment: 
+      - HOST=192.168.0.34
+      - PORT=4590
+    networks:
+      - seccams
+    ports:
+      - 4590:4590
+
+networks:
+  seccams:
