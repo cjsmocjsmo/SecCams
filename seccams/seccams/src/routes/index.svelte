@@ -18,7 +18,7 @@
 	let pc2TotalEvents = ""
 	let totalEvents = ""
 	onMount(async () => {
-		await fetch(`http://192.168.0.26:8090/Stats`, {mode: "cors", method: "GET"})
+		await fetch(`http://192.168.0.26:8090/stats`, {mode: "cors", method: "GET"})
 		.then(r => r.json())
 		.then(data => {
 			console.log(data)
