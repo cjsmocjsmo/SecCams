@@ -3,7 +3,7 @@
 
 	let PList = []
 	onMount(async () => {
-		await fetch(`http://192.168.0.26:8090/Pc1_last_fifty_pics`, {mode: "cors", method: "GET"})
+		await fetch(`http://192.168.0.26:8090/pc1_last_fifty_pics`, {mode: "cors", method: "GET"})
 		.then(r => r.json())
 		.then(data => {
 			console.log(data.plist)

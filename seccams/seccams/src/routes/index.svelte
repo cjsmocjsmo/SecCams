@@ -28,21 +28,25 @@
 				lhedate = data.health
 			}	
 			picdirsize = data.picDirSize
-			pc1TotalEvents = data.picam1EventTotal
-			pc2TotalEvents = data.picam2EventTotal
+			pc1TotalEvents = data.picam1AllToday
+			pc2TotalEvents = data.picam2AllToday
 			totalEvents = data.totalEvents
-			pc1LastMovingDate = data.picam1LM[2]
-			pc1LastMovingTime = data.picam1LM[3]
-			pc1LastStillDate = data.picam1LS[2]
-			pc1LastStillTime = data.picam1LS[3]
-			pc2LastMovingDate = data.picam2LM[2]
-			pc2LastMovingTime = data.picam2LM[3]
-			pc2LastStillDate = data.picam2LS[2]
-			pc2LastStillTime = data.picam2LS[3]
+			pc1LastMovingDate = data.picam1LM["Date"]
+			let ace = data.picam1LM["Time"].split(",")
+			pc1LastMovingTime = ace[0]
+			pc1LastStillDate = data.picam1LS["Date"]
+			let kings = data.picam1LS["Time"].split(",")
+			pc1LastStillTime = kings[0]
+			pc2LastMovingDate = data.picam2LM["Date"]
+			let queens = data.picam2LM["Time"].split(",")
+			pc2LastMovingTime = queens[0]
+			pc2LastStillDate = data.picam2LS["Date"]
+			let jacks = data.picam2LS["Time"].split(",")
+			pc2LastStillTime = jacks[0]
 		}).catch(err => console.log(err));
 	})
 	async function pingPiCam1() {
-		await fetch(`http://192.168.0.26:8090/PingPiCam1`, {mode: "cors", method: "GET"})
+		await fetch(`http://192.168.0.26:8090/pingpc1`, {mode: "cors", method: "GET"})
 		.then(r => r.json())
 		.then(data => {
 			pc1status = data["pc1"]
@@ -50,7 +54,7 @@
 	}
 
 	async function pingPiCam2() {
-		await fetch(`http://192.168.0.26:8090/PingPiCam2`, {mode: "cors", method: "GET"})
+		await fetch(`http://192.168.0.26:8090/pingpc2`, {mode: "cors", method: "GET"})
 		.then(r => r.json())
 		.then(data => {
 			pc2status = data["pc2"]
@@ -76,7 +80,7 @@
 
 	<line x1="50" y1="25" x2="260" y2="25" style="stroke:rgb(255,0,0);stroke-width:2" />
 
-	<text x="0" y="47" font-size="1em" fill="black" >1 Last Motion</text>
+	<text x="0" y="47" font-size="1em" fill="black" >PC1 Motion</text>
 	<text x="135" y="47" font-size="1em" fill="black" >{pc1LastMovingDate}</text>
 	<text x="230" y="47" font-size="1em" fill="pink">{pc1LastMovingTime}</text>
 
@@ -115,7 +119,7 @@
 	<!-- <text x="230" y="167" font-size="1em" fill="red">{lhetime}</text> -->
 
 	<text x="0" y="247" font-size="1em" fill="black">Pic Folder Size</text>
-	<text x="135" y="247" font-size="1em" fill="red">{picdirsize}</text>
+	<text x="135" y="247" font-size="1em" fill="black">{picdirsize}</text>
 
 
 

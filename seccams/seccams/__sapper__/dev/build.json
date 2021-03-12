@@ -1,0 +1,13 @@
+{
+  "bundler": "webpack",
+  "shimport": null,
+  "assets": {
+    "index": "8c5504167d6a84c32743/index.index.js",
+    "main": "8c5504167d6a84c32743/main.js",
+    "picam1": "8c5504167d6a84c32743/picam1.picam1.js",
+    "picam2": "8c5504167d6a84c32743/picam2.picam2.js"
+  },
+  "css": {
+    "main": null
+  }
+}
