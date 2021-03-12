@@ -3,11 +3,11 @@
 
 	let PList = []
 	onMount(async () => {
-		await fetch(`http://192.168.0.26:8090/pc2_last_fifty_pics`, {mode: "cors", method: "GET"})
+		await fetch(`http://192.168.0.26:8090/pc2_last25_pics`, {mode: "cors", method: "GET"})
 		.then(r => r.json())
 		.then(data => {
-			console.log(data.plist)
-			PList = data.plist
+			console.log(data.last25)
+			PList = data.last25
 		}).catch(err => console.log(err));
 	})
 
