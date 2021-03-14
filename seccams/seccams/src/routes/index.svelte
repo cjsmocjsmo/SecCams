@@ -13,10 +13,15 @@
 	let picdirsize = ""
 	let pc1status = ""
 	let pc2status = ""
+	let lastgd = ""
+	let lastgm = ""
+	let lastpep = ""
 
 	let pc1TotalEvents = ""
 	let pc2TotalEvents = ""
-	let totalEvents = ""
+	let totalEvents = ""																																																																																										
+
+
 	onMount(async () => {
 		await fetch(`http://192.168.0.26:8090/stats`, {mode: "cors", method: "GET"})
 		.then(r => r.json())
@@ -44,6 +49,51 @@
 			let jacks = data.picam2LS["Time"].split(",")
 			pc2LastStillTime = jacks[0]
 		}).catch(err => console.log(err));
+	})
+	onMount(async () => {
+		await fetch(`http://192.168.0.26:8090/last_gd`, {mode: "cors", method: "GET"})
+		.then(r => r.json())
+		.then(data => {
+			console.log(data)
+			console.log(data.lastgd)
+			if (data.lastgd.length === 0) {
+				lastgd = "None"
+			} else {
+				lastgd = data.lastgd[1] + "  " + data.lastgd[2]
+			}
+			// lastgd = data.lastgd[0] + " " + data.lastgd[1] + " " + data.lastgd[2]	
+		}).catch(err => console.log(err));
+	})
+	onMount(async () => {
+		await fetch(`http://192.168.0.26:8090/last_gm`, {mode: "cors", method: "GET"})
+		.then(r => r.json())
+		.then(data => {
+			console.log(data)
+			console.log(data.lastgm)
+			if (data.lastgm.length === 0) {
+				lastgm = "None"
+			} else {
+				lastgm = data.lastgm[1] + "  " + data.lastgm[2]
+			}
+			// lastgd = data.lastgd[0] + " " + data.lastgd[1] + " " + data.lastgd[2]
+		}).catch(err => console.log(err));
+	})
+	onMount(async () => {
+		await fetch(`http://192.168.0.26:8090/last_pep`, {mode: "cors", method: "GET"})
+		.then(r => r.json())
+		.then(data => {
+			console.log(data)
+			console.log(data.lastpep)
+			if (data.lastpep.length === 0) {
+				lastpep = "None"
+			} else{
+				lastpep = data.lastpep[1] + "  " + data.lastpep[2]
+			}
+			// lastpep = data.lastpep[0] + " " + data.lastpep[1] + " " + data.lastpep[2]
+		}).catch(err => console.log(err));
+		
+
+
 	})
 	async function pingPiCam1() {
 		await fetch(`http://192.168.0.26:8090/pingpc1`, {mode: "cors", method: "GET"})
@@ -75,7 +125,7 @@
 	<title>SecCams</title>
 </svelte:head>
 
-<svg viewBox="0 -5 400 325" >
+<svg viewBox="0 -5 310 325" >
 	<text x="0" y="18" font-size="2em" fill="black">SecCams</text>
 
 	<line x1="50" y1="25" x2="260" y2="25" style="stroke:rgb(255,0,0);stroke-width:2" />
@@ -125,14 +175,14 @@
 	<text x="0" y="247" font-size="1em" fill="black">Pic Folder Size</text>
 	<text x="230" y="247" font-size="1em" fill="black">{picdirsize}</text>
 
-	<text x="0" y="267" font-size="1em" fill="black">Garage Door Status</text>
-	<text x="230" y="267" font-size="1em" fill="black">Closed</text>
+	<text x="0" y="267" font-size="1em" fill="black">GD Last Open</text>
+	<text x="140" y="267" font-size="1em" fill="black">{lastgd}</text>
 
 	<text x="0" y="287" font-size="1em" fill="black">Grandma Status</text>
-	<text x="230" y="287" font-size="1em" fill="black">Not Home</text>
+	<text x="140" y="287" font-size="1em" fill="black">{lastgm}</text>
 
 	<text x="0" y="307" font-size="1em" fill="black">People Status</text>
-	<text x="230" y="307" font-size="1em" fill="black">None</text>
+	<text x="140" y="307" font-size="1em" fill="black">{lastpep}</text>
 
 	Sorry, your browser does not support inline SVG.  
 </svg>

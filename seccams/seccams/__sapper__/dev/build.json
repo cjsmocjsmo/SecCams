@@ -2,10 +2,10 @@
   "bundler": "webpack",
   "shimport": null,
   "assets": {
-    "index": "4844741583f54126109e/index.index.js",
-    "main": "4844741583f54126109e/main.js",
-    "picam1": "4844741583f54126109e/picam1.picam1.js",
-    "picam2": "4844741583f54126109e/picam2.picam2.js"
+    "index": "bcc0e457b1ea842c0f7b/index.index.js",
+    "main": "bcc0e457b1ea842c0f7b/main.js",
+    "picam1": "bcc0e457b1ea842c0f7b/picam1.picam1.js",
+    "picam2": "bcc0e457b1ea842c0f7b/picam2.picam2.js"
   },
   "css": {
     "main": null
