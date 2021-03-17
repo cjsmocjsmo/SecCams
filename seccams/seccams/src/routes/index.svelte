@@ -13,18 +13,15 @@
 	let picdirsize = ""
 	let pc1status = ""
 	let pc2status = ""
-
 	let lastgd = ""
 	let lastgd1 = ""
 	let lastgm = ""
 	let lastgm1 = ""
 	let lastpep = ""
 	let lastpep1 = ""
-
 	let pc1TotalEvents = ""
 	let pc2TotalEvents = ""
-	let totalEvents = ""																																																																																										
-
+	let totalEvents = ""
 
 	onMount(async () => {
 		await fetch(`http://192.168.0.26:8090/stats`, {mode: "cors", method: "GET"})
@@ -66,8 +63,7 @@
 			} else {
 				lastgd = data.lastgd[0][0] + " ~ " + data.lastgd[0][1] + " ~ " + data.lastgd[0][2]
 				lastgd1 = data.lastgd[1][0] + " ~ " + data.lastgd[1][1] + " ~ " + data.lastgd[1][2]
-			}
-			// lastgd = data.lastgd[0] + " " + data.lastgd[1] + " " + data.lastgd[2]	
+			}	
 		}).catch(err => console.log(err));
 	})
 	onMount(async () => {
@@ -82,7 +78,6 @@
 				lastgm = data.lastgm[0][0] + " ~ " + data.lastgm[0][1] + " ~ " + data.lastgm[0][2]
 				lastgm1 = data.lastgm[1][0] + " ~ " + data.lastgm[1][1] + " ~ " + data.lastgm[1][2]
 			}
-			// lastgd = data.lastgd[0] + " " + data.lastgd[1] + " " + data.lastgd[2]
 		}).catch(err => console.log(err));
 	})
 	onMount(async () => {
@@ -97,11 +92,7 @@
 				lastpep = data.lastpep[0][0] + " ~ " + data.lastpep[0][1] + " ~ " + data.lastpep[0][2]
 				lastpep1 = data.lastpep[1][0] + " ~ " + data.lastpep[1][1] + " ~ " + data.lastpep[1][2]
 			}
-			// lastpep = data.lastpep[0] + " " + data.lastpep[1] + " " + data.lastpep[2]
 		}).catch(err => console.log(err));
-		
-
-
 	})
 	async function pingPiCam1() {
 		await fetch(`http://192.168.0.26:8090/pingpc1`, {mode: "cors", method: "GET"})
@@ -139,26 +130,18 @@
 	<line x1="50" y1="25" x2="260" y2="25" style="stroke:rgb(255,0,0);stroke-width:2" />
 
 	<text x="0" y="47" font-size="1em" fill="black" >PC1 Motion</text>
-	<!-- <text x="135" y="47" font-size="1em" fill="black" >{pc1LastMovingDate}</text> -->
 	<text x="230" y="47" font-size="1em" fill="pink">{pc1LastMovingTime}</text>
 
 	<text x="0" y="67" font-size="1em" fill="black">PC1 Still</text>
-	<!-- <text x="135" y="67" font-size="1em" fill="black" >{pc1LastStillDate}</text> -->
 	<text x="230" y="67" font-size="1em" fill="blue">{pc1LastStillTime}</text>
-
-	<!-- <line x1="50" y1="93" x2="260" y2="93" style="stroke:rgb(255,0,0);stroke-width:2" /> -->
 
 	<text x="0" y="87" font-size="1em" fill="black" on:click={handlepingPiCam1Click}>PC1 Ping</text>
 	<text x="230" y="87" font-size="1em" fill="blue">{pc1status}</text>
 
-	
-
 	<text x="0" y="107" font-size="1em" fill="black" >PC2 Motion</text>
-	<!-- <text x="135" y="107" font-size="1em" fill="black" >{pc2LastMovingDate}</text> -->
 	<text x="230" y="107" font-size="1em" fill="pink">{pc2LastMovingTime}</text>
 
 	<text x="0" y="127" font-size="1em" fill="black">PC2 Still</text>
-	<!-- <text x="135" y="127" font-size="1em" fill="black" >{pc2LastStillDate}</text> -->
 	<text x="230" y="127" font-size="1em" fill="blue">{pc2LastStillTime}</text>
 
 	<text x="0" y="147" font-size="1em" fill="black" on:click={handlepingPiCam2Click}>PC2 Ping</text>
@@ -166,19 +149,15 @@
 
 	<text x="0" y="167" font-size="1em" fill="black">Health Check</text>
 	<text x="230" y="167" font-size="1em" fill="black" >{lhedate}</text>
-	<!-- <text x="230" y="167" font-size="1em" fill="red">{lhetime}</text> -->
 
 	<text x="0" y="187" font-size="1em" fill="black">PC1 Total</text>
 	<text x="230" y="187" font-size="1em" fill="black" >{pc1TotalEvents}</text>
-	<!-- <text x="230" y="167" font-size="1em" fill="red">{lhetime}</text> -->
 
 	<text x="0" y="207" font-size="1em" fill="black">PC2 Total</text>
 	<text x="230" y="207" font-size="1em" fill="black" >{pc2TotalEvents}</text>
-	<!-- <text x="230" y="167" font-size="1em" fill="red">{lhetime}</text> -->
 
 	<text x="0" y="227" font-size="1em" fill="black">Total Events</text>
 	<text x="230" y="227" font-size="1em" fill="black" >{totalEvents}</text>
-	<!-- <text x="230" y="167" font-size="1em" fill="red">{lhetime}</text> -->
 
 	<text x="0" y="247" font-size="1em" fill="black">Pic Folder Size</text>
 	<text x="230" y="247" font-size="1em" fill="black">{picdirsize}</text>
@@ -194,8 +173,6 @@
 	<text x="0" y="387" font-size="1em" fill="black">People Status</text>
 	<text x="72" y="407" font-size="1em" fill="black">{lastpep}</text>
 	<text x="50" y="427" font-size="1em" fill="black">{lastpep1}</text>
-	<!--<text x="0" y="307" font-size="1em" fill="black">People Status</text>
-	<text x="140" y="307" font-size="1em" fill="black">{lastpep}</text> -->
 
 	Sorry, your browser does not support inline SVG.  
 </svg>
