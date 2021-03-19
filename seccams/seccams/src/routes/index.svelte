@@ -171,7 +171,7 @@
 	<text x="50" y="367" font-size="1em" fill="black">{lastgm1}</text>
 
 	<text x="0" y="387" font-size="1em" fill="black">People Status</text>
-	<text x="72" y="407" font-size="1em" fill="black">{lastpep}</text>
+	<text x="71" y="407" font-size="1em" fill="black">{lastpep}</text>
 	<text x="50" y="427" font-size="1em" fill="black">{lastpep1}</text>
 
 	Sorry, your browser does not support inline SVG.  
