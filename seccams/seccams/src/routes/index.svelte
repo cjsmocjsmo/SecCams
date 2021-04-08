@@ -1,5 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
+	import WebSocket from 'ws';
+
 	let pc2LastMovingDate = ""
 	let pc2LastMovingTime = ""
 	let pc2LastStillDate = ""
@@ -118,6 +120,23 @@
 	let handlepingPiCam2Click = () => {
 		let promise = pingPiCam2().catch(err => console.log(err));
 	}
+
+	// const socket = new WebSocket("ws://192.168.0.91:4041/");
+	// socket.onopen = function() {
+  	// 	console.log("[open] Connection established");
+  	// 	console.log("Sending to server");
+  	// 	socket.send("My name is John");
+	// };
+
+	// socket.onmessage = function(event) {
+  	// 	console.log(`[message] Data received from server: ${event.data}`);
+	// };
+	// const initialValue = { };
+	// export const myStore = websocketStore(, initialValue, ['NoNo', 'NoNo', 'NoNo']);
+
+	// let socket = new WebSocket()
+
+	
 </script>
 
 <svelte:head>

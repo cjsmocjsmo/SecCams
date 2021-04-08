@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-
+	
 	let PList = []
 	onMount(async () => {
 		await fetch(`http://192.168.0.26:8090/pc1_last_fifty_pics`, {mode: "cors", method: "GET"})
